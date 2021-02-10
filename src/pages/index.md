@@ -3,7 +3,6 @@ title: Home
 sections:
   - section_id: swifthero
     type: section_hero
-    image: images/swifthomepage_1.png
     image_alt: SwiftSight Homepage
     title: 'Creating Fast, Secure & Scalable Websites'
     content: null
@@ -129,6 +128,5 @@ sections:
         border: black
 meta_title: Stackbit Azimuth Theme
 meta_description: The preview of the Azimuth theme
-# this is pointing to landing.js in src/template
 template: landing
 ---
