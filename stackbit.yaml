@@ -261,6 +261,7 @@ models:
             - section_features
             - section_hero
             - section_posts
+            - section_overview
             - section_pricing
             - section_reviews
             - section_contact
@@ -847,3 +848,50 @@ models:
               default: name
             - type: boolean
               name: relativeUrl
+  section_overview:
+    type: object
+    label: Overview Section
+    extends:
+      - section
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: Title for the section
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the section
+      # use ctrl + / for comment block
+      # - type: enum
+      #   name: background
+      #   label: Background
+      #   description: The background of the section
+      #   options:
+      #     - gray
+      #     - white
+      #   default: gray
+      - type: list
+        name: reviews
+        label: Reviews
+        items:
+          type: model
+          models:
+            - overview_item
+  overview_item:
+    type: object
+    label: Overview Item
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Title
+      - type: image
+        name: background
+        label: Background
+      - type: text
+        name: content
+        label: Content
+      - type: boolean
+        name: has_icon
+        label: Has Icon
