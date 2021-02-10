@@ -3,6 +3,7 @@
   color: $gray-700;
   padding-bottom: 1em;
   padding-top: 1em;
+  padding-left: 1em;
 
   a {
     text-decoration: none;
@@ -14,6 +15,12 @@
   align-items: center;
   display: -ms-flexbox;
   display: flex;
+}
+
+.company_logo_img {
+  padding-left: 2em;
+  padding-bottom: 1em;
+  padding-top: 1em;
 }
 
 .site-branding {
@@ -37,11 +44,32 @@
   margin: 0;
 
   img {
-    max-height: 40px;
+    max-height: 100px;
+    margin-left: 15px;
+  }
+
+  @media only screen and (max-width:801px){
+    img{
+      margin-left: 0px;
+    }
   }
 }
 
 .site-navigation {
+  .button {
+    font-size: 1em;
+  }
+}
+
+.site-navigation{
+  .menu-button.button.secondary-contact{
+      font-size: 0.78889rem;
+      line-height: 3;
+      margin-right: 0px;
+  }
+}
+
+.site-navigation-themes{
   .button {
     font-size: 1em;
   }
@@ -61,10 +89,21 @@
 
     a:not(.button) {
       color: inherit;
-  
+
       &:hover {
         color: $gray-500;
       }
+    }
+  }
+
+  .site-navigation-themes{
+    .current-menu-item {
+      color: blue;
+    }
+
+    &a:not(.button) {
+      font-size: 20px;
+
     }
   }
 }
@@ -74,12 +113,12 @@
     display: none;
   }
 
-  .site-navigation {
+  .site-navigation,.site-navigation-themes{
     margin-left: auto;
 
     .menu-item {
       display: inline-block;
-      margin: 0 0 0 1.875em;
+      margin: 0 1.4em 0 1.4em;
     }
 
     .button {
@@ -89,6 +128,7 @@
     .menu-button + .menu-button {
       margin-left: 0.9375em;
     }
+
   }
 
   @supports (position: sticky) or (position: -webkit-sticky) {
@@ -96,7 +136,7 @@
       background: #fff;
       position: -webkit-sticky;
       position: sticky;
-      top:0;
+      top: 0;
       z-index: 999;
 
       .has--scrolled & {
@@ -106,23 +146,34 @@
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (min-width:802px){
+    #menu-open-themes{
+      display:none;
+    }
+}
+
+@media only screen and (max-width: 801px) {
   .site {
     overflow: hidden;
     position: relative;
   }
 
+  .company_logo_img {
+    display: none;
+  }
+
   .site-header {
     &:before {
-      background: rgba($gray-100, .75);
+      background: rgba($gray-100, 0.75);
       content: "";
       height: 100vh;
       left: 0;
       opacity: 0;
       position: absolute;
       top: 0;
-      -webkit-transition: opacity .15s ease-in-out,visibility 0s ease-in-out .15s;
-      transition: opacity .15s ease-in-out,visibility 0s ease-in-out .15s;
+      -webkit-transition: opacity 0.15s ease-in-out,
+        visibility 0s ease-in-out 0.15s;
+      transition: opacity 0.15s ease-in-out, visibility 0s ease-in-out 0.15s;
       visibility: hidden;
       width: 100%;
       z-index: 998;
@@ -149,9 +200,35 @@
     }
   }
 
-  #menu-open {
-    margin-left: auto;
+  .menu-toggle-themes {
+    background: 0;
+    border: 0;
+    box-shadow: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+    font-size: inherit;
+    height: 1.66667rem;
+    padding: 0;
+    position: relative;
+    width: 1.66667rem;
+    right: 22.5px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
+
+  #menu-open {
+    margin-left: 75px;
+  }
+
+  #menu-open-themes{
+      margin-left: auto;
+      display: block;
+  }  
 
   #menu-close {
     position: absolute;
@@ -159,7 +236,13 @@
     top: 1rem;
   }
 
-  .site-navigation {
+  #menu-close-themes{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .site-navigation{
     background: #fff;
     box-sizing: border-box;
     height: 100vh;
@@ -167,8 +250,8 @@
     position: absolute;
     right: -400px;
     top: 0;
-    -webkit-transition: right .3s ease-in-out, visibility 0s .3s ease-in-out;
-    transition: right .3s ease-in-out, visibility 0s .3s ease-in-out;
+    -webkit-transition: right 0.3s ease-in-out, visibility 0s 0.3s ease-in-out;
+    transition: right 0.3s ease-in-out, visibility 0s 0.3s ease-in-out;
     visibility: hidden;
     width: 400px;
     z-index: 999;
@@ -205,7 +288,14 @@
 
   .site-nav-inside {
     height: 100%;
-    overflow: auto;
+    overflow: icon-close;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+
+  .site-nav-inside-themes {
+    height: 100%;
+    overflow: icon-close;
     -webkit-overflow-scrolling: touch;
     position: relative;
   }
@@ -225,8 +315,8 @@
 
     .site-navigation {
       right: 0;
-      -webkit-transition: right .3s ease-in-out;
-      transition: right .3s ease-in-out;
+      -webkit-transition: right 0.3s ease-in-out;
+      transition: right 0.3s ease-in-out;
       visibility: visible;
     }
 
@@ -249,5 +339,81 @@
   #menu-close {
     right: $container-padding;
     top: $container-padding;
+  }
+}
+
+.menu--opened-themes{
+  .site {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    width: 100%;
+    z-index: 997;
+  }
+
+  .site-navigation-themes {
+    right: 0;
+    -webkit-transition: right 0.3s ease-in-out;
+    transition: right 0.3s ease-in-out;
+    visibility: visible;
+  }
+
+  .site-header {
+    &:before {
+      opacity: 1;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+      visibility: visible;
+    }
+  }
+}
+
+.site-navigation-themes{
+  background: black;
+  box-sizing: border-box;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  right: -400px;
+  top: 0;
+  -webkit-transition: right 0.3s ease-in-out, visibility 0s 0.3s ease-in-out;
+  transition: right 0.18s ease-in-out, visibility 0s 0.18s ease-in-out;
+  visibility: hidden;
+  width: 400px;
+  z-index: 999;
+
+  .menu {
+    padding: 3.66667em 3vw 3.66667vw 10vw;
+  }
+
+  .menu-item {
+    &:not(.menu-button) {
+      border-bottom: 1px solid $gray-200;;
+
+      &:first-child {
+        border-top: 1px solid $gray-200;
+      }
+    }
+
+    &.menu-button {
+      margin-top: 1.66667em;
+    }
+  }
+
+  .menu-item a {
+    &:not(.button) {
+      display: block;
+      padding: 0.75em 0;
+      color: white; 
+      text-decoration: none;
+    }
+  }
+
+  .button {
+    width: 100%;
   }
 }
