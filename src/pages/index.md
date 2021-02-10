@@ -5,7 +5,7 @@ sections:
     type: section_hero
     image: images/swifthomepage_1.png
     image_alt: SwiftSight Homepage
-    title: 'Creating Fast, Secure & Scalable Websites'
+    title: 'Creating Fast, Secure & Scalable Websitessasds'
     content: null
     actions:
       - label: Get in touch
