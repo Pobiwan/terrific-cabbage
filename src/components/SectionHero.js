@@ -18,11 +18,14 @@ export default class SectionHero extends React.Component {
     return (
       
       <div id={_.get(section, "section_id", null)} className='hero-container'>
-        <HeroImg
-          className="hero-img"
-          src={withPrefix(_.get(section, "image", null))}
-          alt={_.get(section, "image_alt", null)}
-        />
+    {_.get(section, "image", null) && (
+              <div className="cell block-preview">
+                <img
+                  src={withPrefix(_.get(section, "image", null))}
+                  alt={_.get(section, "image_alt", null)}
+                />
+              </div>
+            )}
         <div className="hero-text-block">
           {_.get(section, "title", null) && (
             <div className="block-text-title ">
