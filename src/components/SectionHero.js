@@ -18,7 +18,7 @@ export default class SectionHero extends React.Component {
     return (
       
       <div id={_.get(section, "section_id", null)} className='hero-container'>
-    {_.get(section, "image", null) && (
+       {_.get(section, "image", null) && (
               <div className="cell block-preview">
                 <img
                   src={withPrefix(_.get(section, "image", null))}
